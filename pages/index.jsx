@@ -84,6 +84,27 @@ export default function Home() {
     const depositAtx = await tx.wait();
     console.log(depositAtx, "depositAtx");
   };
+
+  const withdrawal = async (e) => {
+    // const approveTx = await erc20Contract.approve(poolAddress, parsedAmount);
+    // console.log(approveTx, "aprobacion");
+    // const aTx = await approveTx.wait();
+    // console.log(aTx, "await tx");
+
+    // const tx = await wooyPoolContract.withdrawInstantlyFrom(
+    //   address,
+    //   parsedAmount,
+    //   tokenAddress,
+    //   ethers.constants.AddressZero
+    // );
+
+    // console.log(tx, "Retirando....");
+
+    // const widthdrawAtx = await tx.wait();
+    // console.log(widthdrawAtx, "widthdrawAtx");
+  }
+
+
   return (
     <Layout>
       <div className="px-12 w-full">
