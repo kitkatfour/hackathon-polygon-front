@@ -9,44 +9,7 @@ import {
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 
-import { chain, createClient, WagmiProvider } from "wagmi";
-
-const celoChain = {
-  id: 42220,
-  name: "Celo",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Celo",
-    symbol: "CELO",
-  },
-  rpcUrls: {
-    default: "https://forno.celo.org",
-  },
-  blockExplorers: {
-    default: { name: "Celo Explorer", url: "https://explorer.celo.org" },
-  },
-  testnet: false,
-};
-
-const alfajoresCeloChain = {
-  id: 44787,
-  name: "Celo (Alfajores Testnet)",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Celo",
-    symbol: "CELO",
-  },
-  rpcUrls: {
-    default: "https://alfajores-forno.celo-testnet.org",
-  },
-  blockExplorers: {
-    default: {
-      name: "Alfajores Explorer",
-      url: "https://alfajores-blockscout.celo-testnet.org",
-    },
-  },
-  testnet: true,
-};
+import { createClient, WagmiProvider } from "wagmi";
 
 const mumbaiTestnet = {
   id: 80001,
@@ -89,12 +52,12 @@ const polygon = {
 };
 
 const { chains, provider } = configureChains(
-  [celoChain, alfajoresCeloChain, mumbaiTestnet, polygon],
+  [mumbaiTestnet, polygon],
   [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "Wooy",
   chains,
 });
 
