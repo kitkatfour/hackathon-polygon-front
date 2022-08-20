@@ -125,7 +125,7 @@ export default function Home() {
           <button style={{ backgroundColor: "red" }} onClick={deposit}>
             Join the pool
           </button>
-          <Card
+          {/* <Card
             image="bored.jpg"
             title={"Win a ticket"}
             desc={"This will be the best prize of the world"}
@@ -138,7 +138,7 @@ export default function Home() {
             desc={"This will be the best prize of the world"}
             buttonlabel={"Enter the pool"}
             path="/"
-          />
+          /> */}
         </div>
       </div>
     </Layout>
