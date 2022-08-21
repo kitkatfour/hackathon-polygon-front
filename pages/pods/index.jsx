@@ -38,7 +38,7 @@ const nfts = () => {
             title={"Win a ticket for the worldcup final x Impact market"}
             desc={"This will be the best prize of the world"}
             buttonlabel={"Claim PoD"}
-            path="nfts/1"
+            path="pods/1"
           />
 
           <Card

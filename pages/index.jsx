@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useProvider, useContract, useSigner, useAccount } from "wagmi";
-import Card from "../components/Card";
 import abi from "../contracts/PrizePool.json";
 import erc20abi from "../contracts/ERC20ABI.json";
 import ControlledTokenAbi from "../contracts/ControlledToken.json";
 import Layout from "../components/Layout";
 import { ethers } from "ethers";
 // import { useSendTransactionWrapper } from "../hooks/useSendTransactionWrapper";
+import Link from 'next/link';
+import Timer from "../components/Timer";
 
 export default function Home() {
   // const sendTx = useSendTransactionWrapper();
@@ -85,63 +86,77 @@ export default function Home() {
     console.log(depositAtx, "depositAtx");
   };
 
-  // const withdrawal = async (e) => {
-  //   const approveTx = await erc20Contract.approve(poolAddress, parsedAmount);
-  //   console.log(approveTx, "aprobacion");
-  //   const aTx = await approveTx.wait();
-  //   console.log(aTx, "await tx");
+  const withdrawal = async (e) => {
+    const approveTx = await erc20Contract.approve(poolAddress, parsedAmount);
+    console.log(approveTx, "aprobacion");
+    const aTx = await approveTx.wait();
+    console.log(aTx, "await tx");
 
-  //   const tx = await wooyPoolContract.withdrawInstantlyFrom(
-  //     address,
-  //     parsedAmount,
-  //     tokenAddress,
-  //     ethers.constants.AddressZero
-  //   );
+    const tx = await wooyPoolContract.withdrawInstantlyFrom(
+      address,
+      parsedAmount,
+      tokenAddress,
+    );
 
-  //   console.log(tx, "Retirando....");
+    console.log(tx, "Retirando....");
 
-  //   const widthdrawAtx = await tx.wait();
-  //   console.log(widthdrawAtx, "widthdrawAtx");
-  // }
+    const widthdrawAtx = await tx.wait();
+    console.log(widthdrawAtx, "widthdrawAtx");
+  }
 
 
   return (
     <Layout>
-      <div className="px-12 w-full">
-        <h1 className="text-4xl text-white">Active Pools</h1>
-        <div className="w-full grid grid-cols-3 gap-7 mt-16">
-          <Card
-            image="pool1.jpeg"
-            title={"Win a ticket"}
-            desc={"This will be the best prize of the world"}
-            buttonlabel={"Enter the pool"}
-            path="/"
-          />
-          <input
-            placeholder="Ingresar monto a depositar"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <button style={{ backgroundColor: "red" }} onClick={deposit}>
-            Join the pool
-          </button>
-          {/* <Card
-            image="bored.jpg"
-            title={"Win a ticket"}
-            desc={"This will be the best prize of the world"}
-            buttonlabel={"Enter the pool"}
-            path="/"
-          />
-          <Card
-            image="pool2.jpeg"
-            title={"Win a ticket"}
-            desc={"This will be the best prize of the world"}
-            buttonlabel={"Enter the pool"}
-            path="/"
-          /> */}
+      <div className="px-32 w-full">
+        <h1 className="text-4xl text-white font-semibold">Current Prize</h1>
+          <div className="flex rounded-2xl bg-white shadow-lg mt-8 hover:shadow-2xl hover:cursor-pointer transition-all">
+            <img src={'/pool1.png'} alt="" className="rounded-xl h-80" />
+            <div className="p-8 flex flex-col justify-center items-center gap-8 w-full h-full">
+              <div className="">
+                <h2 className="text-2xl text-black font-medium">{'Experience the world cup in qatar'}</h2>
+                <p className="text-[#ED652B]">X WEFOREST</p>
+                <hr className="w-full mt-4" />
+                <Timer />
+              </div>
+                <Link href={'/'}>
+                  <button className="mt-4 lg:px-16 px-8 py-2 bg-[#ED652B] rounded-md border-2 border-black	 hover:shadow-2xl hover:bg-[#fd692a] transition-all">
+                    JOIN POOL
+                  </button>
+                </Link>
+            </div>
         </div>
       </div>
     </Layout>
   );
-}
-1;
+};
+
+{/* <input
+  placeholder="Ingresar monto a depositar"
+  value={amount}
+  onChange={(e) => setAmount(e.target.value)}
+/>
+<button style={{ backgroundColor: "red" }} onClick={deposit}>
+  Join the pool
+</button>
+<input
+  placeholder="Ingresar monto a retirar"
+  value={amount}
+  onChange={(e) => setAmount(e.target.value)}
+/>
+<button style={{ backgroundColor: "red" }} onClick={deposit}>
+  Join the pool
+</button> */}
+{/* <Card
+  image="bored.jpg"
+  title={"Win a ticket"}
+  desc={"This will be the best prize of the world"}
+  buttonlabel={"Enter the pool"}
+  path="/"
+/>
+<Card
+  image="pool2.jpeg"
+  title={"Win a ticket"}
+  desc={"This will be the best prize of the world"}
+  buttonlabel={"Enter the pool"}
+  path="/"
+/> */}
