@@ -6,7 +6,7 @@ import ControlledTokenAbi from "../contracts/ControlledToken.json";
 import Layout from "../components/Layout";
 import { ethers } from "ethers";
 // import { useSendTransactionWrapper } from "../hooks/useSendTransactionWrapper";
-import Link from 'next/link';
+import Link from "next/link";
 import Timer from "../components/Timer";
 
 export default function Home() {
@@ -95,42 +95,59 @@ export default function Home() {
     const tx = await wooyPoolContract.withdrawInstantlyFrom(
       address,
       parsedAmount,
-      tokenAddress,
+      tokenAddress
     );
 
     console.log(tx, "Retirando....");
 
     const widthdrawAtx = await tx.wait();
     console.log(widthdrawAtx, "widthdrawAtx");
-  }
+  };
 
+  /// @notice Withdraw assets from the Prize Pool instantly.  A fairness fee may be charged for an early exit.
+  /// @param from The address to redeem tokens from.
+  /// @param amount The amount of tokens to redeem for assets.
+  /// @param controlledToken The address of the token to redeem (i.e. ticket or sponsorship)
+  /// @param maximumExitFee The maximum exit fee the caller is willing to pay.  This should be pre-calculated by the calculateExitFee() fxn.
+  /// @param donationPercentage The percentage of the withdrawal to donate
+  /// @return The actual exit fee paid
+  // function withdrawInstantlyFrom(
+  //   address from,
+  //   uint256 amount,
+  //   address controlledToken,
+  //   uint256 maximumExitFee,
+  //   uint256 donationPercentage
+  // )
 
   return (
     <Layout>
       <div className="px-32 w-full">
         <h1 className="text-4xl text-white font-semibold">Current Prize</h1>
-          <div className="flex rounded-2xl bg-white shadow-lg mt-8 hover:shadow-2xl hover:cursor-pointer transition-all">
-            <img src={'/pool1.png'} alt="" className="rounded-xl h-80" />
-            <div className="p-8 flex flex-col justify-center items-center gap-8 w-full h-full">
-              <div className="">
-                <h2 className="text-2xl text-black font-medium">{'Experience the world cup in qatar'}</h2>
-                <p className="text-[#ED652B]">X WEFOREST</p>
-                <hr className="w-full mt-4" />
-                <Timer />
-              </div>
-                <Link href={'/pool'}>
-                  <button className="mt-4 lg:px-16 px-8 py-2 bg-[#ED652B] rounded-md border-2 border-black	 hover:shadow-2xl hover:bg-[#fd692a] transition-all">
-                    JOIN POOL
-                  </button>
-                </Link>
+        <div className="flex rounded-2xl bg-white shadow-lg mt-8 hover:shadow-2xl hover:cursor-pointer transition-all">
+          <img src={"/pool1.png"} alt="" className="rounded-xl h-80" />
+          <div className="p-8 flex flex-col justify-center items-center gap-8 w-full h-full">
+            <div className="">
+              <h2 className="text-2xl text-black font-medium">
+                {"Experience the world cup in qatar"}
+              </h2>
+              <p className="text-[#ED652B]">X WEFOREST</p>
+              <hr className="w-full mt-4" />
+              <Timer />
             </div>
+            <Link href={"/pool"}>
+              <button className="mt-4 lg:px-16 px-8 py-2 bg-[#ED652B] rounded-md border-2 border-black	 hover:shadow-2xl hover:bg-[#fd692a] transition-all">
+                JOIN POOL
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </Layout>
   );
-};
+}
 
-{/* <input
+{
+  /* <input
   placeholder="Ingresar monto a depositar"
   value={amount}
   onChange={(e) => setAmount(e.target.value)}
@@ -145,8 +162,10 @@ export default function Home() {
 />
 <button style={{ backgroundColor: "red" }} onClick={deposit}>
   Join the pool
-</button> */}
-{/* <Card
+</button> */
+}
+{
+  /* <Card
   image="bored.jpg"
   title={"Win a ticket"}
   desc={"This will be the best prize of the world"}
@@ -159,4 +178,5 @@ export default function Home() {
   desc={"This will be the best prize of the world"}
   buttonlabel={"Enter the pool"}
   path="/"
-/> */}
+/> */
+}
