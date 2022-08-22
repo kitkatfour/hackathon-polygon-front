@@ -4,9 +4,11 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <nav className="py-8 px-4 flex justify-between">
-      <Image src="/Wooy-logo.svg" width={150} height={150} />
+    <nav className="px-4 flex justify-between">
+      <Image src="/wooylogo.svg" width={150} height={150} />
+      <div className="py-12">
       <ConnectButton />
+      </div>
     </nav>
   );
 };

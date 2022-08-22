@@ -15,7 +15,7 @@ const SideBar = () => {
           <p className="text-3xl my-1 text-black">Pools</p>
         </div>
       </Link>
-      <Link href="/nfts">
+      <Link href="/pods">
         <div className="flex text-center items-center gap-2 hover:cursor-pointer rounded-xl bg-[#ED652B] px-12 transition-all">
           <ColorLensIcon className="text-black" />
           <p className="text-3xl my-1 text-black">NFTs</p>

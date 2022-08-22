@@ -9,52 +9,55 @@ import {
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 
-import { chain, createClient, WagmiProvider } from "wagmi";
+import { createClient, WagmiProvider } from "wagmi";
 
-const celoChain = {
-  id: 42220,
-  name: "Celo",
+const mumbaiTestnet = {
+  id: 80001,
+  name: "Mumbai Testnet",
   nativeCurrency: {
     decimals: 18,
-    name: "Celo",
-    symbol: "CELO",
+    name: "MATIC",
+    symbol: "MATIC",
   },
   rpcUrls: {
-    default: "https://forno.celo.org",
-  },
-  blockExplorers: {
-    default: { name: "Celo Explorer", url: "https://explorer.celo.org" },
-  },
-  testnet: false,
-};
-
-const alfajoresCeloChain = {
-  id: 44787,
-  name: "Celo (Alfajores Testnet)",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Celo",
-    symbol: "CELO",
-  },
-  rpcUrls: {
-    default: "https://alfajores-forno.celo-testnet.org",
+    default: "https://rpc-mumbai.maticvigil.com",
   },
   blockExplorers: {
     default: {
-      name: "Alfajores Explorer",
-      url: "https://alfajores-blockscout.celo-testnet.org",
+      name: "Mumbai Explorer",
+      url: "https://mumbai.polygonscan.com/",
     },
   },
   testnet: true,
 };
 
+const polygon = {
+  id: 137,
+  name: "Polygon",
+  nativeCurrency: {
+    decimals: 18,
+    name: "MATIC",
+    symbol: "MATIC",
+  },
+  rpcUrls: {
+    default: "https://polygon-rpc.com",
+  },
+  blockExplorers: {
+    default: {
+      name: "Polygon Explorer",
+      url: "https://polygonscan.com/",
+    },
+  },
+  testnet: false,
+};
+
 const { chains, provider } = configureChains(
-  [celoChain, alfajoresCeloChain],
+  [mumbaiTestnet, polygon],
   [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: "Wooy",
   chains,
 });
 
