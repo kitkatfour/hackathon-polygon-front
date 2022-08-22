@@ -118,7 +118,7 @@ export default function Home() {
                 <hr className="w-full mt-4" />
                 <Timer />
               </div>
-                <Link href={'/'}>
+                <Link href={'/pool'}>
                   <button className="mt-4 lg:px-16 px-8 py-2 bg-[#ED652B] rounded-md border-2 border-black	 hover:shadow-2xl hover:bg-[#fd692a] transition-all">
                     JOIN POOL
                   </button>
