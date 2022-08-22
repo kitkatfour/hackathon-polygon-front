@@ -86,23 +86,23 @@ export default function Home() {
     console.log(depositAtx, "depositAtx");
   };
 
-  const withdrawal = async (e) => {
-    const approveTx = await erc20Contract.approve(poolAddress, parsedAmount);
-    console.log(approveTx, "aprobacion");
-    const aTx = await approveTx.wait();
-    console.log(aTx, "await tx");
+  // const withdrawal = async (e) => {
+  //   const approveTx = await erc20Contract.approve(poolAddress, parsedAmount);
+  //   console.log(approveTx, "aprobacion");
+  //   const aTx = await approveTx.wait();
+  //   console.log(aTx, "await tx");
 
-    const tx = await wooyPoolContract.withdrawInstantlyFrom(
-      address,
-      parsedAmount,
-      tokenAddress
-    );
+  //   const tx = await wooyPoolContract.withdrawInstantlyFrom(
+  //     address,
+  //     parsedAmount,
+  //     tokenAddress
+  //   );
 
-    console.log(tx, "Retirando....");
+  //   console.log(tx, "Retirando....");
 
-    const widthdrawAtx = await tx.wait();
-    console.log(widthdrawAtx, "widthdrawAtx");
-  };
+  //   const widthdrawAtx = await tx.wait();
+  //   console.log(widthdrawAtx, "widthdrawAtx");
+  // };
 
   /// @notice Withdraw assets from the Prize Pool instantly.  A fairness fee may be charged for an early exit.
   /// @param from The address to redeem tokens from.
