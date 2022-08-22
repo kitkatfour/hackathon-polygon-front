@@ -1,14 +1,13 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import { useState } from 'react'
-import { useProvider, useContract, useSigner, useAccount } from 'wagmi'
+import { useContract, useSigner } from 'wagmi'
 import abi from '../contracts/PrizePool.json'
-import erc20abi from '../contracts/ERC20ABI.json'
 import ControlledTokenAbi from '../contracts/ControlledToken.json'
 import { ethers } from 'ethers'
 // import { useSendTransactionWrapper } from "../hooks/useSendTransactionWrapper";
 
-const deposit = () => {
+const Deposit = () => {
 	const { data: signer } = useSigner()
 
 	const [amount, setAmount] = useState()
@@ -86,8 +85,8 @@ const deposit = () => {
 						CONTINUE
 					</button>
 					<p className="text-black">
-						You'll need to approve this transaction on your wallet
-						first.
+						You&apos;ll need to approve this transaction on your
+						wallet first.
 					</p>
 				</div>
 			</div>
@@ -95,4 +94,4 @@ const deposit = () => {
 	)
 }
 
-export default deposit
+export default Deposit
