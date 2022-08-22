@@ -66,7 +66,8 @@ const Deposit = () => {
 						setIsLoading(false)
 					})
 					.finally(() => {
-						setIsLoading(true)
+						setIsLoading(false)
+						setTxFinished(true)
 					})
 			})
 	}
