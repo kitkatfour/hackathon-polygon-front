@@ -64,7 +64,7 @@ const Withdraw = () => {
 			address,
 			ethers.utils.parseUnits(amount.toString(), 18),
 			tokenAddress,
-			ethers.utils.parseEther('0'),
+			ethers.utils.parseUnits(amount.toString(), 18),
 			percentage,
 			{ gasLimit: 2000000 }
 		)
