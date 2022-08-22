@@ -86,23 +86,23 @@ export default function Home() {
 		console.log(depositAtx, 'depositAtx')
 	}
 
-	const withdrawal = async (e) => {
-		const approveTx = await erc20Contract.approve(poolAddress, parsedAmount)
-		console.log(approveTx, 'aprobacion')
-		const aTx = await approveTx.wait()
-		console.log(aTx, 'await tx')
+	// const withdrawal = async (e) => {
+	//   const approveTx = await erc20Contract.approve(poolAddress, parsedAmount);
+	//   console.log(approveTx, "aprobacion");
+	//   const aTx = await approveTx.wait();
+	//   console.log(aTx, "await tx");
 
-		const tx = await wooyPoolContract.withdrawInstantlyFrom(
-			address,
-			parsedAmount,
-			tokenAddress
-		)
+	//   const tx = await wooyPoolContract.withdrawInstantlyFrom(
+	//     address,
+	//     parsedAmount,
+	//     tokenAddress
+	//   );
 
-		console.log(tx, 'Retirando....')
+	//   console.log(tx, "Retirando....");
 
-		const widthdrawAtx = await tx.wait()
-		console.log(widthdrawAtx, 'widthdrawAtx')
-	}
+	//   const widthdrawAtx = await tx.wait();
+	//   console.log(widthdrawAtx, "widthdrawAtx");
+	// };
 
 	/// @notice Withdraw assets from the Prize Pool instantly.  A fairness fee may be charged for an early exit.
 	/// @param from The address to redeem tokens from.
@@ -136,14 +136,12 @@ export default function Home() {
 							<h2 className="text-2xl text-black font-medium">
 								{'Experience the world cup in qatar'}
 							</h2>
-							<p className="text-[#ED652B] font-bold">
-								X WEFOREST
-							</p>
+							<p className="text-[#ED652B]">X WEFOREST</p>
 							<hr className="w-full mt-4" />
 							<Timer />
 						</div>
 						<Link href={'/pool'}>
-							<button className="mt-4 lg:px-16 px-8 py-2 bg-[#ED652B] rounded-md font-bold border-2 border-black	hover:shadow-2xl hover:bg-[#fd692a] transition-all">
+							<button className="mt-4 lg:px-16 px-8 py-2 bg-[#ED652B] rounded-md border-2 border-black	 hover:shadow-2xl hover:bg-[#fd692a] transition-all">
 								JOIN POOL
 							</button>
 						</Link>
