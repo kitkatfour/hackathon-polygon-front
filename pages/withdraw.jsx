@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react'
 
 import { useContract, useSigner } from 'wagmi'
 import abi from '../contracts/PrizePool.json'
-import erc20abi from '../contracts/ERC20ABI.json'
 import ControlledTokenAbi from '../contracts/ControlledToken.json'
 import { ethers } from 'ethers'
 
-const withdraw = () => {
+const Withdraw = () => {
 	const [deposited, setDeposited] = useState(0)
+	const [address, setAddress] = useState('')
 	const [amount, setAmount] = useState(0)
 	const [percentage, setPercentage] = useState(25)
 	const { data: signer } = useSigner()
@@ -47,6 +47,7 @@ const withdraw = () => {
 			if (!signer) return
 
 			const address = await signer.getAddress()
+			setAddress(address)
 
 			const balance = await erc20Contract.balanceOf(address)
 			setDeposited(ethers.utils.formatEther(balance))
@@ -56,7 +57,6 @@ const withdraw = () => {
 	}, [signer])
 
 	const withdraw = async () => {
-		const address = await signer.getAddress()
 		if (!address) return
 
 		// This should be dispatched on
@@ -95,7 +95,7 @@ const withdraw = () => {
 					</p>
 					<p className="">
 						If you prefer donate more percentage or the full amount
-						you'll withdraw to the NGO that benefits from our
+						you&apos;ll withdraw to the NGO that benefits from our
 						current active pool.
 					</p>
 					<Box className="py-4">
@@ -142,4 +142,4 @@ const withdraw = () => {
 	)
 }
 
-export default withdraw
+export default Withdraw
