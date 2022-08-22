@@ -9,8 +9,6 @@ import { ethers } from 'ethers'
 import Link from 'next/link'
 import Timer from '../components/Timer'
 
-import { poolAddress, tokenAddress } from '../constants/contractsAddress'
-
 export default function Home() {
 	// const sendTx = useSendTransactionWrapper();
 	const [amount, setAmount] = useState()
@@ -20,13 +18,13 @@ export default function Home() {
 	const { data: signer } = useSigner()
 
 	// Mumbai PrizePool contract address
-	//const poolAddress = "0x26e507ce8ce828abc7fc986c8a19f4354d5b8cd2";
+	const poolAddress = '0x26e507ce8ce828abc7fc986c8a19f4354d5b8cd2'
 
 	// Polygon PrizePool contract addrress
 	// const poolAddress = "0x4f3Fc13df562c7C06e530b054834a282fc1961f7";
 
 	// PT Aave aAAVE Ticket token address
-	//const tokenAddress = "0x74c873c719866a650F151A9fBF0cB5b5c6315906";
+	const tokenAddress = '0x74c873c719866a650F151A9fBF0cB5b5c6315906'
 
 	// WETH Polygon token address
 	// const tokenAddress = "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619";
