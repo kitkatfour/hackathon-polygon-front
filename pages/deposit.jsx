@@ -24,6 +24,9 @@ const deposit = () => {
 	// WETH Polygon token address
 	//const tokenAddress = '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619'
 
+	// AAVE (depositTo)
+	const controlledTokenAddress = '0x341d1f30e77D3FBfbD43D17183E2acb9dF25574E'
+
 	const wooyPoolContract = useContract({
 		addressOrName: poolAddress,
 		contractInterface: abi,
@@ -31,7 +34,7 @@ const deposit = () => {
 	})
 
 	const erc20Contract = useContract({
-		addressOrName: tokenAddress,
+		addressOrName: controlledTokenAddress,
 		contractInterface: ControlledTokenAbi,
 		signerOrProvider: signer,
 	})
@@ -52,7 +55,8 @@ const deposit = () => {
 			address,
 			parsedAmount,
 			tokenAddress,
-			ethers.constants.AddressZero
+			ethers.constants.AddressZero,
+			{ gasLimit: 1000000 }
 		)
 
 		console.log(tx, 'Depositando....')
@@ -65,7 +69,7 @@ const deposit = () => {
 		<Layout>
 			<div className="flex justify-center items-center gap-8 h-full w-full">
 				<div className="bg-white h-full flex flex-col rounded-md py-24 px-48">
-					<h1 className="text-black">Deposit USDC on Polygon</h1>
+					<h1 className="text-black">Deposit AAVE on Polygon</h1>
 					<p className="text-black">
 						More networks and tokens coming soon!
 					</p>
