@@ -58,15 +58,19 @@ const withdraw = () => {
 	const withdraw = async () => {
 		const address = await signer.getAddress()
 		if (!address) return
+
 		// This should be dispatched on
 		const withdrawTx = await wooyPoolContract.withdrawInstantlyFrom(
 			address,
-			ethers.utils.parseUnits(amount.toString()),
+			ethers.utils.parseUnits(amount.toString(), 18),
 			tokenAddress,
-			ethers.utils.parseUnits(amount.toString()),
+			ethers.utils.parseEther('0'),
 			percentage,
-			{ gasLimit: 100000 }
+			{ gasLimit: 2000000 }
 		)
+
+		const wTx = await withdrawTx.wait()
+		console.log(wTx)
 	}
 
 	return (
